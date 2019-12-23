@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Softball_TeamsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tbl_Equipo">
+    <Key>
+      <PropertyRef Name="EquipoID" />
+    </Key>
+    <Property Name="EquipoID" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+    <Property Name="Ciudad" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tbl_Jugador">
+    <Key>
+      <PropertyRef Name="JugadorID" />
+    </Key>
+    <Property Name="JugadorID" Type="int" Nullable="false" />
+    <Property Name="Nombres" Type="nvarchar" MaxLength="50" />
+    <Property Name="Apellidos" Type="nvarchar" MaxLength="50" />
+    <Property Name="Edad" Type="int" />
+    <Property Name="Posicion" Type="nvarchar" MaxLength="50" />
+    <Property Name="EquipoID" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_tbl_Jugador_tbl_Equipo">
+    <End Role="tbl_Equipo" Type="Self.tbl_Equipo" Multiplicity="1" />
+    <End Role="tbl_Jugador" Type="Self.tbl_Jugador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Equipo">
+        <PropertyRef Name="EquipoID" />
+      </Principal>
+      <Dependent Role="tbl_Jugador">
+        <PropertyRef Name="EquipoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Softball_TeamsModelStoreContainer">
+    <EntitySet Name="tbl_Equipo" EntityType="Self.tbl_Equipo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Jugador" EntityType="Self.tbl_Jugador" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_tbl_Jugador_tbl_Equipo" Association="Self.FK_tbl_Jugador_tbl_Equipo">
+      <End Role="tbl_Equipo" EntitySet="tbl_Equipo" />
+      <End Role="tbl_Jugador" EntitySet="tbl_Jugador" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

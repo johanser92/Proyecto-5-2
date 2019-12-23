@@ -1,0 +1,12 @@
+C:\Users\Johan\source\repos\Proyecto.5-2.Web\Proyecto.5-2.Models\bin\Debug\Proyecto.5-2.Models.dll.config
+C:\Users\Johan\source\repos\Proyecto.5-2.Web\Proyecto.5-2.Models\bin\Debug\Proyecto.5-2.Models.dll
+C:\Users\Johan\source\repos\Proyecto.5-2.Web\Proyecto.5-2.Models\bin\Debug\Proyecto.5-2.Models.pdb
+C:\Users\Johan\source\repos\Proyecto.5-2.Web\Proyecto.5-2.Models\bin\Debug\EntityFramework.dll
+C:\Users\Johan\source\repos\Proyecto.5-2.Web\Proyecto.5-2.Models\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Johan\source\repos\Proyecto.5-2.Web\Proyecto.5-2.Models\bin\Debug\EntityFramework.xml
+C:\Users\Johan\source\repos\Proyecto.5-2.Web\Proyecto.5-2.Models\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Johan\source\repos\Proyecto.5-2.Web\Proyecto.5-2.Models\obj\Debug\Proyecto.5-2.Models.csprojAssemblyReference.cache
+C:\Users\Johan\source\repos\Proyecto.5-2.Web\Proyecto.5-2.Models\obj\Debug\Proyecto.5-2.Models.csproj.CoreCompileInputs.cache
+C:\Users\Johan\source\repos\Proyecto.5-2.Web\Proyecto.5-2.Models\obj\Debug\Proyecto.5-2.Models.csproj.CopyComplete
+C:\Users\Johan\source\repos\Proyecto.5-2.Web\Proyecto.5-2.Models\obj\Debug\Proyecto.5-2.Models.dll
+C:\Users\Johan\source\repos\Proyecto.5-2.Web\Proyecto.5-2.Models\obj\Debug\Proyecto.5-2.Models.pdb

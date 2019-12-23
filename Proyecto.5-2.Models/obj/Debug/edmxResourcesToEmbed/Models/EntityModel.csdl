@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Softball_TeamsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tbl_Equipo">
+    <Key>
+      <PropertyRef Name="EquipoID" />
+    </Key>
+    <Property Name="EquipoID" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Ciudad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbl_Jugador" Relationship="Self.FK_tbl_Jugador_tbl_Equipo" FromRole="tbl_Equipo" ToRole="tbl_Jugador" />
+  </EntityType>
+  <EntityType Name="tbl_Jugador">
+    <Key>
+      <PropertyRef Name="JugadorID" />
+    </Key>
+    <Property Name="JugadorID" Type="Int32" Nullable="false" />
+    <Property Name="Nombres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Apellidos" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Edad" Type="Int32" />
+    <Property Name="Posicion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EquipoID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tbl_Equipo" Relationship="Self.FK_tbl_Jugador_tbl_Equipo" FromRole="tbl_Jugador" ToRole="tbl_Equipo" />
+  </EntityType>
+  <Association Name="FK_tbl_Jugador_tbl_Equipo">
+    <End Role="tbl_Equipo" Type="Self.tbl_Equipo" Multiplicity="1" />
+    <End Role="tbl_Jugador" Type="Self.tbl_Jugador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Equipo">
+        <PropertyRef Name="EquipoID" />
+      </Principal>
+      <Dependent Role="tbl_Jugador">
+        <PropertyRef Name="EquipoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Softball_TeamsEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tbl_Equipo" EntityType="Self.tbl_Equipo" />
+    <EntitySet Name="tbl_Jugador" EntityType="Self.tbl_Jugador" />
+    <AssociationSet Name="FK_tbl_Jugador_tbl_Equipo" Association="Self.FK_tbl_Jugador_tbl_Equipo">
+      <End Role="tbl_Equipo" EntitySet="tbl_Equipo" />
+      <End Role="tbl_Jugador" EntitySet="tbl_Jugador" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Proyecto._5_2.Models.Models.tbl_Equipo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Equipo</h2>
+
+<div class="col-sm-2">
+    <a class="btn btn-success" style="margin-bottom:10px" href="/Equipo/Create">
+        Crear Nuevo
+    </a>
+</div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ciudad)
+        </th>
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ciudad)
+        </td>
+        
+        <td>
+            <a href="/Equipo/Edit?id=@item.EquipoID" class="btn btn-warning">Editar</a>
+            <a href="/Equipo/Details?id=@item.EquipoID" class="btn btn-success">Detalles</a>
+            <a href="/Equipo/Delete?id=@item.EquipoID" class="btn btn-danger">Borrar</a>
+        </td>
+    </tr>
+}
+
+</table>

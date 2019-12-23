@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Softball_TeamsModelStoreContainer" CdmEntityContainer="Softball_TeamsEntities">
+    <EntitySetMapping Name="tbl_Equipo">
+      <EntityTypeMapping TypeName="Softball_TeamsModel.tbl_Equipo">
+        <MappingFragment StoreEntitySet="tbl_Equipo">
+          <ScalarProperty Name="EquipoID" ColumnName="EquipoID" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Jugador">
+      <EntityTypeMapping TypeName="Softball_TeamsModel.tbl_Jugador">
+        <MappingFragment StoreEntitySet="tbl_Jugador">
+          <ScalarProperty Name="JugadorID" ColumnName="JugadorID" />
+          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+          <ScalarProperty Name="Edad" ColumnName="Edad" />
+          <ScalarProperty Name="Posicion" ColumnName="Posicion" />
+          <ScalarProperty Name="EquipoID" ColumnName="EquipoID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Softball_TeamsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_Equipo">
+          <Key>
+            <PropertyRef Name="EquipoID" />
+          </Key>
+          <Property Name="EquipoID" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ciudad" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_Jugador">
+          <Key>
+            <PropertyRef Name="JugadorID" />
+          </Key>
+          <Property Name="JugadorID" Type="int" Nullable="false" />
+          <Property Name="Nombres" Type="nvarchar" MaxLength="50" />
+          <Property Name="Apellidos" Type="nvarchar" MaxLength="50" />
+          <Property Name="Edad" Type="int" />
+          <Property Name="Posicion" Type="nvarchar" MaxLength="50" />
+          <Property Name="EquipoID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_tbl_Jugador_tbl_Equipo">
+          <End Role="tbl_Equipo" Type="Self.tbl_Equipo" Multiplicity="1" />
+          <End Role="tbl_Jugador" Type="Self.tbl_Jugador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Equipo">
+              <PropertyRef Name="EquipoID" />
+            </Principal>
+            <Dependent Role="tbl_Jugador">
+              <PropertyRef Name="EquipoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Softball_TeamsModelStoreContainer">
+          <EntitySet Name="tbl_Equipo" EntityType="Self.tbl_Equipo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Jugador" EntityType="Self.tbl_Jugador" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tbl_Jugador_tbl_Equipo" Association="Self.FK_tbl_Jugador_tbl_Equipo">
+            <End Role="tbl_Equipo" EntitySet="tbl_Equipo" />
+            <End Role="tbl_Jugador" EntitySet="tbl_Jugador" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Softball_TeamsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_Equipo">
+          <Key>
+            <PropertyRef Name="EquipoID" />
+          </Key>
+          <Property Name="EquipoID" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ciudad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_Jugador" Relationship="Self.FK_tbl_Jugador_tbl_Equipo" FromRole="tbl_Equipo" ToRole="tbl_Jugador" />
+        </EntityType>
+        <EntityType Name="tbl_Jugador">
+          <Key>
+            <PropertyRef Name="JugadorID" />
+          </Key>
+          <Property Name="JugadorID" Type="Int32" Nullable="false" />
+          <Property Name="Nombres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Apellidos" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Edad" Type="Int32" />
+          <Property Name="Posicion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EquipoID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tbl_Equipo" Relationship="Self.FK_tbl_Jugador_tbl_Equipo" FromRole="tbl_Jugador" ToRole="tbl_Equipo" />
+        </EntityType>
+        <Association Name="FK_tbl_Jugador_tbl_Equipo">
+          <End Role="tbl_Equipo" Type="Self.tbl_Equipo" Multiplicity="1" />
+          <End Role="tbl_Jugador" Type="Self.tbl_Jugador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Equipo">
+              <PropertyRef Name="EquipoID" />
+            </Principal>
+            <Dependent Role="tbl_Jugador">
+              <PropertyRef Name="EquipoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Softball_TeamsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_Equipo" EntityType="Self.tbl_Equipo" />
+          <EntitySet Name="tbl_Jugador" EntityType="Self.tbl_Jugador" />
+          <AssociationSet Name="FK_tbl_Jugador_tbl_Equipo" Association="Self.FK_tbl_Jugador_tbl_Equipo">
+            <End Role="tbl_Equipo" EntitySet="tbl_Equipo" />
+            <End Role="tbl_Jugador" EntitySet="tbl_Jugador" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Softball_TeamsModelStoreContainer" CdmEntityContainer="Softball_TeamsEntities">
+          <EntitySetMapping Name="tbl_Equipo">
+            <EntityTypeMapping TypeName="Softball_TeamsModel.tbl_Equipo">
+              <MappingFragment StoreEntitySet="tbl_Equipo">
+                <ScalarProperty Name="EquipoID" ColumnName="EquipoID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Jugador">
+            <EntityTypeMapping TypeName="Softball_TeamsModel.tbl_Jugador">
+              <MappingFragment StoreEntitySet="tbl_Jugador">
+                <ScalarProperty Name="JugadorID" ColumnName="JugadorID" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Edad" ColumnName="Edad" />
+                <ScalarProperty Name="Posicion" ColumnName="Posicion" />
+                <ScalarProperty Name="EquipoID" ColumnName="EquipoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

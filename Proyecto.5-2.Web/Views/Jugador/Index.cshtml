@@ -1,0 +1,84 @@
+﻿@model IEnumerable<Proyecto._5_2.Models.Models.tbl_Jugador>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Jugadores</h2>
+
+
+<div class="col-sm-2">
+    <a class="btn btn-success" style="margin-bottom:10px" href="/Jugador/Create">
+        Crear Nuevo
+    </a>
+</div>
+<div class="col-sm-10">
+    <input class="form-control" id="input_search" name="search" type="text" placeholder="busqueda...">
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombres)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellidos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Edad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Posicion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tbl_Equipo.Nombre)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="table_body">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombres)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Apellidos)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Edad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Posicion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tbl_Equipo.Nombre)
+                </td>
+                <td>
+                    <a href="/Jugador/Edit?id=@item.JugadorID" class="btn btn-warning">Editar</a>
+                    <a href="/Jugador/Details?id=@item.JugadorID" class="btn btn-success">Detalles</a>
+                    <a href="/Jugador/Delete?id=@item.JugadorID" class="btn btn-danger">Borrar</a>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+ 
+@*Realiza la busqueda, en la table*@
+@section scripts
+        {
+
+    <script>
+        $(document).ready(function () {
+            $("#input_search").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#table_body tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+}
+
